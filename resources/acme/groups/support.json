@@ -1,0 +1,6 @@
+{
+    "id"       : "support",
+    "org_id"   : 0,
+    "role_ids" : [ 5 ],
+    "user_ids" : [ 3, 4 ]
+}

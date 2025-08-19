@@ -1,0 +1,12 @@
+{
+    "id"          : 1,
+    "name"        : "admin",
+    "org_id"      : 0,
+    "permissions" :
+    [
+        "read:*",
+        "write:*",
+        "manage:users",
+        "manage:billing"
+    ]
+}

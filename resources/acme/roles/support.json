@@ -1,0 +1,10 @@
+{
+    "id"          : 5,
+    "name"        : "support",
+    "org_id"      : 0,
+    "permissions" :
+    [
+        "read:tickets/*",
+        "write:tickets/*"
+    ]
+}

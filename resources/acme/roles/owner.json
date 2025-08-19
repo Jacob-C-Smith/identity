@@ -1,0 +1,6 @@
+{
+    "id"          : 0,
+    "name"        : "owner",
+    "org_id"      : 0,
+    "permissions" : [ "*:*" ]
+}

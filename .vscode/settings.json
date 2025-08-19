@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "log.h": "c",
+        "user.h": "c",
+        "identity.h": "c",
+        "binary.h": "c",
+        "org.h": "c",
+        "role.h": "c",
+        "group.h": "c",
+        "pack.h": "c"
+    }
+}

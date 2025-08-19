@@ -1,0 +1,7 @@
+{
+    "id"        : 0,
+    "name"      : "Alice",
+    "org_id"    : 0,
+    "group_ids" : [ 0 ],
+    "role_ids"  : []
+}

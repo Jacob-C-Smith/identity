@@ -1,0 +1,10 @@
+{
+    "id"          : 4,
+    "name"        : "billing",
+    "org_id"      : 0,
+    "permissions" :
+    [
+        "read:billing",
+        "write:billing"
+    ]
+}

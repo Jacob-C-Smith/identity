@@ -1,0 +1,6 @@
+{
+    "id"       : "finance",
+    "org_id"   : 0,
+    "role_ids" : [ 4 ],
+    "user_ids" : [ 5 ]
+}

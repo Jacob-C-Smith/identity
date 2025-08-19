@@ -1,0 +1,6 @@
+{
+    "id"          : 3,
+    "name"        : "viewer",
+    "org_id"      : 0,
+    "permissions" : [ "read:*" ]
+}

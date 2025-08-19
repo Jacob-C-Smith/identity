@@ -1,0 +1,8 @@
+{
+    "$schema"   : "./user-schema.json",
+    "id"        : 0,
+    "org_id"    : 0,
+    "name"      : "Alice",
+    "group_ids" : [ 0 ],
+    "role_ids"  : []
+}

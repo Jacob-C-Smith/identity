@@ -1,0 +1,27 @@
+{
+    "$schema" : "https://json-schema.org/draft-07/schema#",
+    "title" : "Organization",
+    "type" : "object",
+    "description" : "Describes an organization",
+    "properties" :
+    {
+        "id" :
+        {
+            "title" : "ID",
+            "type" : "integer",
+            "default" : -1,
+            "minimum" : 0,
+            "description" : "The unique ID of the organization"
+        },
+        "name" :
+        {
+            "title" : "name",
+            "type" : "string",
+            "default" : "Acme Corp",
+            "minLength" : 1,
+            "maxLength" : 64,
+            "description" : "The name of the organization"
+        }      
+    },
+    "required" : [ "id", "name" ]   
+}

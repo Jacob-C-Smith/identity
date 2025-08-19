@@ -1,0 +1,12 @@
+{
+    "id"          : 2,
+    "name"        : "editor",
+    "org_id"      : 0,
+    "permissions" :
+    [
+        "read:docs/*",
+        "write:docs/*",
+        "read:issues/*",
+        "write:issues/*"
+    ]
+}

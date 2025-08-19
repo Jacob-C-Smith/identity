@@ -1,0 +1,6 @@
+{
+    "id"       : "ops",
+    "org_id"   : 0,
+    "role_ids" : [ 1 ],
+    "user_ids" : [ 2 ]
+}
