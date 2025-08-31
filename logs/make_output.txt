@@ -1,0 +1,251 @@
+src/group.c:79:13: warning: unused label 'no_email' [-Wunused-label]
+   79 |             no_email:
+      |             ^~~~~~~~~
+src/group.c:87:13: warning: unused label 'no_groups' [-Wunused-label]
+   8clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/identity.o src/identity.c
+clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/org.o src/org.c
+clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/role.o src/role.c
+clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/user.o src/user.c
+clang -shared -o build/libidentity.dylib build/group.o build/identity.o build/org.o build/role.o build/user.o gsdk/build/lib/adjacency_list.dylib gsdk/build/lib/adjacency_matrix.dylib gsdk/build/lib/aes.dylib gsdk/build/lib/array.dylib gsdk/build/lib/b.dylib gsdk/build/lib/base64.dylib gsdk/build/lib/binary.dylib gsdk/build/lib/bitmap.dylib gsdk/build/lib/cache.dylib gsdk/build/lib/circular_buffer.dylib gsdk/build/lib/dict.dylib gsdk/build/lib/digital_signature.dylib gsdk/build/lib/distribute.dylib gsdk/build/lib/hash.dylib gsdk/build/lib/interfaces.dylib gsdk/build/lib/json.dylib gsdk/build/lib/log.dylib gsdk/build/lib/pack.dylib gsdk/build/lib/parallel.dylib gsdk/build/lib/priority_queue.dylib gsdk/build/lib/queue.dylib gsdk/build/lib/red_black.dylib gsdk/build/lib/rsa.dylib gsdk/build/lib/sha.dylib gsdk/build/lib/socket.dylib gsdk/build/lib/stack.dylib gsdk/build/lib/stream.dylib gsdk/build/lib/sync.dylib gsdk/build/lib/tuple.dylib
+clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -o build/identity_server identity_server.c build/libidentity.dylib gsdk/build/lib/adjacency_list.dylib gsdk/build/lib/adjacency_matrix.dylib gsdk/build/lib/aes.dylib gsdk/build/lib/array.dylib gsdk/build/lib/b.dylib gsdk/build/lib/base64.dylib gsdk/build/lib/binary.dylib gsdk/build/lib/bitmap.dylib gsdk/build/lib/cache.dylib gsdk/build/lib/circular_buffer.dylib gsdk/build/lib/dict.dylib gsdk/build/lib/digital_signature.dylib gsdk/build/lib/distribute.dylib gsdk/build/lib/hash.dylib gsdk/build/lib/interfaces.dylib gsdk/build/lib/json.dylib gsdk/build/lib/log.dylib gsdk/build/lib/pack.dylib gsdk/build/lib/parallel.dylib gsdk/build/lib/priority_queue.dylib gsdk/build/lib/queue.dylib gsdk/build/lib/red_black.dylib gsdk/build/lib/rsa.dylib gsdk/build/lib/sha.dylib gsdk/build/lib/socket.dylib gsdk/build/lib/stack.dylib gsdk/build/lib/stream.dylib gsdk/build/lib/sync.dylib gsdk/build/lib/tuple.dylib -Wl,-rpath,@loader_path -Wl,-rpath,@loader_path/../gsdk/build/lib
+clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -o build/identity_client identity_client.c build/libidentity.dylib gsdk/build/lib/adjacency_list.dylib gsdk/build/lib/adjacency_matrix.dylib gsdk/build/lib/aes.dylib gsdk/build/lib/array.dylib gsdk/build/lib/b.dylib gsdk/build/lib/base64.dylib gsdk/build/lib/binary.dylib gsdk/build/lib/bitmap.dylib gsdk/build/lib/cache.dylib gsdk/build/lib/circular_buffer.dylib gsdk/build/lib/dict.dylib gsdk/build/lib/digital_signature.dylib gsdk/build/lib/distribute.dylib gsdk/build/lib/hash.dylib gsdk/build/lib/interfaces.dylib gsdk/build/lib/json.dylib gsdk/build/lib/log.dylib gsdk/build/lib/pack.dylib gsdk/build/lib/parallel.dylib gsdk/build/lib/priority_queue.dylib gsdk/build/lib/queue.dylib gsdk/build/lib/red_black.dylib gsdk/build/lib/rsa.dylib gsdk/build/lib/sha.dylib gsdk/build/lib/socket.dylib gsdk/build/lib/stack.dylib gsdk/build/lib/stream.dylib gsdk/build/lib/sync.dylib gsdk/build/lib/tuple.dylib -Wl,-rpath,@loader_path -Wl,-rpath,@loader_path/../gsdk/build/lib
+ from 'int (*)(size_t, size_t)' (aka 'int (*)(unsigned long, unsigned long)') to 'fn_comparator *' (aka 'int (*)(const void *, const void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+  208 |             (fn_comparator *)   group_comparator, // comparator
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/identity.c:216:13: warning: cast from 'int (*)(size_t, size_t)' (aka 'int (*)(unsigned long, unsigned long)') to 'fn_comparator *' (aka 'int (*)(const void *, const void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+  216 |             (fn_comparator *)   user_comparator, // comparator
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/identity.c:243:63: warning: cast from 'int (*)(identity *)' (aka 'int (*)(struct identity_s *)') to 'fn_parallel_task *' (aka 'void *(*)(void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+  243 |         parallel_thread_start(&p_identity->p_listener_thread, (fn_parallel_task *)identity_listener, p_identity);
+      |                                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7 warnings generated.
+src/org.c:76:13: warning: unused label 'no_email' [-Wunused-label]
+   76 |             no_email:
+      |             ^~~~~~~~~
+src/org.c:84:13: warning: unused label 'no_groups' [-Wunused-label]
+   84 |             no_groups:
+      |             ^~~~~~~~~~
+src/org.c:92:13: warning: unused label 'no_roles' [-Wunused-label]
+   92 |             no_roles:
+      |             ^~~~~~~~~
+src/org.c:103:13: warning: unused label 'no_mem_1' [-Wunused-label]
+  103 |             no_mem_1: p_org = default_allocator(p_org, 0);
+      |             ^~~~~~~~~
+src/org.c:142:12: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  142 |     p_name = dict_get(p_dict, "name");
+      |            ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+src/org.c:143:14: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  143 |     p_org_id = dict_get(p_dict, "org_id");
+      |              ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/org.c:256:32: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  256 |     printf(" - ID   : %lld\n", p_org->id);
+      |                       ~~~~     ^~~~~~~~~
+      |                       %zu
+src/org.c:308:30: warning: unused parameter 'p_value' [-Wunused-parameter]
+  308 | int org_unpack ( void *const p_value, void *p_buffer )
+      |                              ^
+src/org.c:308:45: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+  308 | int org_unpack ( void *const p_value, void *p_buffer )
+      |                                             ^
+9 warnings generated.
+src/role.c:81:13: warning: unused label 'no_email' [-Wunused-label]
+   81 |             no_email:
+      |             ^~~~~~~~~
+src/role.c:89:13: warning: unused label 'no_groups' [-Wunused-label]
+   89 |             no_groups:
+      |             ^~~~~~~~~~
+src/role.c:97:13: warning: unused label 'no_roles' [-Wunused-label]
+   97 |             no_roles:
+      |             ^~~~~~~~~
+src/role.c:108:13: warning: unused label 'no_mem_1' [-Wunused-label]
+  108 |             no_mem_1: p_role = default_allocator(p_role, 0);
+      |             ^~~~~~~~~
+src/role.c:27:12: warning: unused parameter 'org_id' [-Wunused-parameter]
+   27 |     size_t org_id,
+      |            ^
+src/role.c:28:11: warning: unused parameter '_p_permissions' [-Wunused-parameter]
+   28 |     char *_p_permissions[],
+      |           ^
+src/role.c:29:12: warning: unused parameter 'permissions_length' [-Wunused-parameter]
+   29 |     size_t permissions_length
+      |            ^
+src/role.c:147:12: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  147 |     p_name = dict_get(p_dict, "name");
+      |            ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+src/role.c:148:15: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  148 |     p_role_id = dict_get(p_dict, "role_id");
+      |               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/role.c:261:32: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  261 |     printf(" - ID   : %lld\n", p_role->id);
+      |                       ~~~~     ^~~~~~~~~~
+      |                       %zu
+src/role.c:313:31: warning: unused parameter 'p_value' [-Wunused-parameter]
+  313 | int role_unpack ( void *const p_value, void *p_buffer )
+      |                               ^
+src/role.c:313:46: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+  313 | int role_unpack ( void *const p_value, void *p_buffer )
+      |                                              ^
+12 warnings generated.
+src/user.c:118:13: warning: unused label 'no_email' [-Wunused-label]
+  118 |             no_email:
+      |             ^~~~~~~~~
+src/user.c:172:11: warning: variable 'p_dict' set but not used [-Wunused-but-set-variable]
+  172 |     dict *p_dict = NULL;
+      |           ^
+src/user.c:243:29: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  243 |     printf(" - ID: %lld\n", p_user->id);
+      |                    ~~~~     ^~~~~~~~~~
+      |                    %zu
+src/user.c:244:42: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  244 |     printf(" - Organization ID: %lld\n", p_user->org_id);
+      |                                 ~~~~     ^~~~~~~~~~~~~~
+      |                                 %zu
+src/user.c:250:32: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  250 |     printf(" - Roles[%d]: \n", array_size(p_user->p_roles));
+      |                      ~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                      %zu
+src/user.c:251:33: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  251 |     printf(" - Groups[%d]: \n", array_size(p_user->p_groups));
+      |                       ~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       %zu
+src/user.c:363:31: warning: unused parameter 'p_value' [-Wunused-parameter]
+  363 | int user_unpack ( void *const p_value, void *p_buffer )
+      |                               ^
+src/user.c:363:46: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+  363 | int user_unpack ( void *const p_value, void *p_buffer )
+      |                                              ^
+8 warnings generated.
+identity_server.c:69:66: warning: passing 'const char *[1]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+   69 |             (void) role_construct(&_p_roles[0], 0, "owner"  , 0, _owner_permissions  , 1),
+      |                                                                  ^~~~~~~~~~~~~~~~~~
+include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+   44 |     char *_p_permissions[],
+      |           ^
+identity_server.c:70:66: warning: passing 'const char *[4]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+   70 |             (void) role_construct(&_p_roles[1], 1, "admin"  , 0, _admin_permissions  , 4),
+      |                                                                  ^~~~~~~~~~~~~~~~~~
+include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+   44 |     char *_p_permissions[],
+      |           ^
+identity_server.c:71:66: warning: passing 'const char *[4]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+   71 |             (void) role_construct(&_p_roles[2], 2, "editor" , 0, _editor_permissions , 4),
+      |                                                                  ^~~~~~~~~~~~~~~~~~~
+include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+   44 |     char *_p_permissions[],
+      |           ^
+identity_server.c:72:66: warning: passing 'const char *[1]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+   72 |             (void) role_construct(&_p_roles[3], 3, "viewer" , 0, _viewer_permissions , 1),
+      |                                                                  ^~~~~~~~~~~~~~~~~~~
+include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+   44 |     char *_p_permissions[],
+      |           ^
+identity_server.c:73:66: warning: passing 'const char *[2]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+   73 |             (void) role_construct(&_p_roles[4], 4, "billing", 0, _billing_permissions, 2),
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~
+include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+   44 |     char *_p_permissions[],
+      |           ^
+identity_server.c:74:66: warning: passing 'const char *[2]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+   74 |             (void) role_construct(&_p_roles[5], 5, "support", 0, _support_permissions, 2);
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~
+include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+   44 |     char *_p_permissions[],
+      |           ^
+identity_server.c:91:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+   91 |             (void) group_construct(&_p_groups[0], 0, "dev"    , 0, _dev_roles    , 1),
+      |                                                                    ^~~~~~~~~~
+include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+   44 |     size_t _roles[],
+      |            ^
+identity_server.c:92:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+   92 |             (void) group_construct(&_p_groups[1], 1, "finance", 0, _finance_roles, 1),
+      |                                                                    ^~~~~~~~~~~~~~
+include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+   44 |     size_t _roles[],
+      |            ^
+identity_server.c:93:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+   93 |             (void) group_construct(&_p_groups[2], 2, "ops"    , 0, _ops_roles    , 1),
+      |                                                                    ^~~~~~~~~~
+include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+   44 |     size_t _roles[],
+      |            ^
+identity_server.c:94:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+   94 |             (void) group_construct(&_p_groups[3], 3, "support", 0, _support_roles, 1);
+      |                                                                    ^~~~~~~~~~~~~~
+include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+   44 |     size_t _roles[],
+      |            ^
+identity_server.c:113:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  113 |             (void) user_construct(&_p_users[0], 0, "Alice", "a", 0, _dev_group, 1, NULL      , 0),
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:114:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  114 |             (void) user_construct(&_p_users[1], 1, "Bob"  , "b", 0, _dev_group, 1, NULL      , 0),
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:115:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  115 |             (void) user_construct(&_p_users[2], 2, "Carol", "c", 0, _dev_group, 1, NULL      , 0),
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:116:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  116 |             (void) user_construct(&_p_users[3], 3, "Dana" , "d", 0, _dev_group, 1, NULL      , 0),
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:117:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  117 |             (void) user_construct(&_p_users[4], 4, "Erin" , "e", 0, _dev_group, 1, NULL      , 0),
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:118:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  118 |             (void) user_construct(&_p_users[5], 5, "Frank", "f", 0, _dev_group, 1, NULL      , 0),
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:119:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  119 |             (void) user_construct(&_p_users[6], 6, "Zoe"  , "z", 0, _dev_group, 1, _zoe_roles, 1);
+      |                                                                     ^~~~~~~~~~
+include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+   48 |     size_t *p_groups, size_t groups_len,
+      |             ^
+identity_server.c:119:84: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  119 |             (void) user_construct(&_p_users[6], 6, "Zoe"  , "z", 0, _dev_group, 1, _zoe_roles, 1);
+      |                                                                                    ^~~~~~~~~~
+include/identity/user.h:49:13: note: passing argument to parameter 'p_roles' here
+   49 |     size_t *p_roles , size_t roles_len 
+      |             ^
+identity_server.c:106:26: warning: unused variable '_finance_group' [-Wunused-variable]
+  106 |             const size_t _finance_group[] = { 1 };
+      |                          ^~~~~~~~~~~~~~
+identity_server.c:107:26: warning: unused variable '_ops_group' [-Wunused-variable]
+  107 |             const size_t _ops_group    [] = { 2 };
+      |                          ^~~~~~~~~~
+identity_server.c:108:26: warning: unused variable '_support_group' [-Wunused-variable]
+  108 |             const size_t _support_group[] = { 3 };
+      |                          ^~~~~~~~~~~~~~
+identity_server.c:40:11: warning: unused variable 'p_user' [-Wunused-variable]
+   40 |     user *p_user = NULL;
+      |           ^~~~~~
+identity_server.c:34:16: warning: unused parameter 'argc' [-Wunused-parameter]
+   34 | int main ( int argc, const char *argv[] )
+      |                ^
+identity_server.c:34:34: warning: unused parameter 'argv' [-Wunused-parameter]
+   34 | int main ( int argc, const char *argv[] )
+      |                                  ^
+24 warnings generated.
+identity_client.c:42:16: warning: unused parameter 'argc' [-Wunused-parameter]
+   42 | int main ( int argc, const char *argv[] )
+      |                ^
+identity_client.c:42:34: warning: unused parameter 'argv' [-Wunused-parameter]
+   42 | int main ( int argc, const char *argv[] )
+      |                                  ^
+2 warnings generated.

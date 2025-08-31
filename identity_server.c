@@ -190,8 +190,8 @@ int main ( int argc, const char *argv[] )
     // print the identity server
     identity_print(p_identity);
 
-    getchar();
-
+    sleep(300);
+    
     // success
     return EXIT_SUCCESS;
 }

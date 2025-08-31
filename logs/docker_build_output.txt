@@ -1,0 +1,679 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 363B 0.0s done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 1.2s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:38387523653efa0039f8e1c89bb74a30504e76ee9f565e25c9a09841f9427b05
+#3 resolve docker.io/docker/dockerfile:1@sha256:38387523653efa0039f8e1c89bb74a30504e76ee9f565e25c9a09841f9427b05 0.0s done
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/fedora:latest
+#4 DONE 0.6s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [1/7] FROM docker.io/library/fedora:latest@sha256:6c53109bbf345c2612ada5bd06e8e352b45d85c0a2d770167b61c8d1d047e124
+#7 resolve docker.io/library/fedora:latest@sha256:6c53109bbf345c2612ada5bd06e8e352b45d85c0a2d770167b61c8d1d047e124 0.1s done
+#7 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 772.67kB 0.8s done
+#6 DONE 0.9s
+
+#8 [2/7] RUN dnf -y install go clang make net-tools hostname
+#8 CACHED
+
+#9 [3/7] WORKDIR /home
+#9 CACHED
+
+#10 [4/7] COPY . /home/
+#10 DONE 1.0s
+
+#11 [5/7] RUN (cd /home/; make -C /home/gsdk)
+#11 0.278 make: Entering directory '/home/gsdk'
+#11 0.313 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,interfaces.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/interfaces.so src/core/interfaces/interfaces.c
+#11 0.441 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,log.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/log.so src/core/log/log.c /home/gsdk/build/lib/interfaces.so
+#11 0.576 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,sync.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/sync.so src/core/sync/sync.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/interfaces.so
+#11 0.724 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,pack.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/pack.so src/core/pack/pack.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 0.935 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,aes.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/aes.so src/core/aes/aes.c src/core/aes/gcm.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 1.198 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,rsa.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/rsa.so src/core/rsa/rsa.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 26.67 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,sha.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/sha.so src/core/sha/sha.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 26.75 src/core/sha/sha.c:353:23: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+#11 26.75   353 |     for (int i = 0; i < sizeof(sha256_hash); i++) 
+#11 26.75       |                     ~ ^ ~~~~~~~~~~~~~~~~~~~
+#11 26.85 1 warning generated.
+#11 26.89 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,digital_signature.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/digital_signature.so src/core/digital_signature/digital_signature.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sha.so /home/gsdk/build/lib/rsa.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 27.02 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,hash.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/hash.so src/core/hash/hash.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 27.19 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,socket.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/socket.so src/core/socket/secure_socket.c src/core/socket/socket.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/rsa.so /home/gsdk/build/lib/interfaces.so
+#11 27.42 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,stream.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/stream.so src/core/stream/stream.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so /home/gsdk/build/lib/socket.so
+#11 27.49 src/core/stream/stream.c:170:13: warning: unused label 'no_mem' [-Wunused-label]
+#11 27.49   170 |             no_mem:
+#11 27.49       |             ^~~~~~~
+#11 27.49 src/core/stream/stream.c:265:13: warning: unused label 'no_mem' [-Wunused-label]
+#11 27.49   265 |             no_mem:
+#11 27.49       |             ^~~~~~~
+#11 27.49 src/core/stream/stream.c:297:29: warning: cast to 'void *' from smaller integer type 'socket_tcp' (aka 'int') [-Wint-to-void-pointer-cast]
+#11 27.49   297 |     p_stream->p_parameter = (void *)p_stream->data._tcp_socket;
+#11 27.49       |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 27.49 src/core/stream/stream.c:321:13: warning: unused label 'no_mem' [-Wunused-label]
+#11 27.49   321 |             no_mem:
+#11 27.49       |             ^~~~~~~
+#11 27.50 src/core/stream/stream.c:527:37: warning: cast to smaller integer type 'socket_tcp' (aka 'int') from 'void *' [-Wvoid-pointer-to-int-cast]
+#11 27.50   527 |     bytes_read = socket_tcp_receive((socket_tcp)p_stream->p_parameter, buffer, size);
+#11 27.50       |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 27.50 src/core/stream/stream.c:572:37: warning: cast to smaller integer type 'socket_tcp' (aka 'int') from 'void *' [-Wvoid-pointer-to-int-cast]
+#11 27.50   572 |     bytes_written = socket_tcp_send((socket_tcp)p_stream->p_parameter, buffer, size);
+#11 27.50       |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 27.50 src/core/stream/stream.c:635:13: warning: unused label 'failed_to_close_stream' [-Wunused-label]
+#11 27.50   635 |             failed_to_close_stream:
+#11 27.50       |             ^~~~~~~~~~~~~~~~~~~~~~~
+#11 27.50 src/core/stream/stream.c:697:13: warning: unused variable 'p_stream' [-Wunused-variable]
+#11 27.50   697 |     stream *p_stream = *pp_stream;
+#11 27.50       |             ^~~~~~~~
+#11 27.55 8 warnings generated.
+#11 27.59 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,adjacency_list.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/adjacency_list.so src/data/adjacency_list/adjacency_list.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 27.66 src/data/adjacency_list/adjacency_list.c:4:75: warning: unused parameter 'size' [-Wunused-parameter]
+#11 27.66     4 | int adjacency_list_construct ( adjacency_list **pp_adjacency_list, size_t size )
+#11 27.66       |                                                                           ^
+#11 27.73 1 warning generated.
+#11 27.77 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,adjacency_matrix.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/adjacency_matrix.so src/data/adjacency_matrix/adjacency_matrix.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 27.84 src/data/adjacency_matrix/adjacency_matrix.c:3:81: warning: unused parameter 'size' [-Wunused-parameter]
+#11 27.84     3 | int adjacency_matrix_construct ( adjacency_matrix **pp_adjacency_matrix, size_t size )
+#11 27.84       |                                                                                 ^
+#11 27.85 src/data/adjacency_matrix/adjacency_matrix.c:117:29: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+#11 27.85   117 |     if(a_idx == -1 || b_idx == -1) return 0;
+#11 27.85       |                       ~~~~~ ^  ~~
+#11 27.85 src/data/adjacency_matrix/adjacency_matrix.c:117:14: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+#11 27.85   117 |     if(a_idx == -1 || b_idx == -1) return 0;
+#11 27.85       |        ~~~~~ ^  ~~
+#11 27.89 3 warnings generated.
+#11 27.94 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,array.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/array.so src/data/array/array.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 28.16 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,bitmap.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/bitmap.so src/data/bitmap/bitmap.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 28.33 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,cache.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/cache.so src/data/cache/cache.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so build/lib/interfaces.so
+#11 28.54 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,circular_buffer.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/circular_buffer.so src/data/circular_buffer/circular_buffer.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 28.70 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,dict.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/dict.so src/data/dict/dict.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 28.79 src/data/dict/dict.c:1214:13: warning: unused label 'failed_to_clear' [-Wunused-label]
+#11 28.79  1214 |             failed_to_clear:
+#11 28.79       |             ^~~~~~~~~~~~~~~~
+#11 28.91 1 warning generated.
+#11 28.94 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,b.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/b.so src/data/b/b.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so	
+#11 29.24 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,binary.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/binary.so src/data/binary/binary.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so build/lib/interfaces.so
+#11 29.50 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,tuple.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/tuple.so src/data/tuple/tuple.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 29.67 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,priority_queue.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/priority_queue.so src/data/priority_queue/priority_queue.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 29.88 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,queue.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/queue.so src/data/queue/queue.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 30.04 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,stack.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/stack.so src/data/stack/stack.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 30.11 src/data/stack/stack.c:225:7: warning: assigning to 'void *' from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#11 30.11   225 |         *ret = p_stack->_p_data[p_stack->offset-1];
+#11 30.11       |              ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 30.17 1 warning generated.
+#11 30.21 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,red_black.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/red_black.so src/data/red_black/red_black.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 30.29 src/data/red_black/red_black.c:802:63: warning: variable 'p_parent' set but not used [-Wunused-but-set-variable]
+#11 30.29   802 |     red_black_tree_node *p_node  = p_red_black_tree->p_root, *p_parent = NULL;
+#11 30.29       |                                                               ^
+#11 30.51 1 warning generated.
+#11 30.54 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,base64.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/base64.so src/reflection/base64/base64.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so
+#11 30.61 src/reflection/base64/base64.c:49:10: warning: variable 'output_length' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+#11 30.61    49 |     if ( len      ==          0 ) goto no_len;
+#11 30.61       |          ^~~~~~~~~~~~~~~~~~~~~~
+#11 30.61 src/reflection/base64/base64.c:80:12: note: uninitialized use occurs here
+#11 30.61    80 |     return output_length;
+#11 30.61       |            ^~~~~~~~~~~~~
+#11 30.61 src/reflection/base64/base64.c:49:5: note: remove the 'if' if its condition is always false
+#11 30.61    49 |     if ( len      ==          0 ) goto no_len;
+#11 30.61       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 30.61 src/reflection/base64/base64.c:56:5: note: variable 'output_length' is declared here
+#11 30.61    56 |     size_t output_length = ( 4 * ( ( len + 2 ) / 3 ) ) - remainders[len % 3];
+#11 30.61       |     ^
+#11 30.64 1 warning generated.
+#11 30.68 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,json.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/json.so src/reflection/json/json.c -lm /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/array.so /home/gsdk/build/lib/dict.so /home/gsdk/build/lib/interfaces.so
+#11 30.98 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,parallel.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/parallel.so src/performance/parallel/parallel.c src/performance/parallel/parallel_test.c src/performance/parallel/schedule.c src/performance/parallel/thread.c src/performance/parallel/thread_pool.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/array.so /home/gsdk/build/lib/dict.so /home/gsdk/build/lib/json.so /home/gsdk/build/lib/interfaces.so
+#11 31.67 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -shared -Wl,-soname,distribute.so -Wl,-rpath,'$ORIGIN/../lib' -lpthread -pthread -O3 -o build/lib/distribute.so src/performance/distribute/access_token.c src/performance/distribute/connection.c src/performance/distribute/rpc.c /home/gsdk/build/lib/parallel.so /home/gsdk/build/lib/json.so /home/gsdk/build/lib/base64.so /home/gsdk/build/lib/dict.so /home/gsdk/build/lib/array.so /home/gsdk/build/lib/queue.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so /home/gsdk/build/lib/socket.so /home/gsdk/build/lib/sha.so /home/gsdk/build/lib/rsa.so
+#11 31.76 src/performance/distribute/access_token.c:80:32: warning: passing 'char *' to parameter of type 'const unsigned char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+#11 31.76    80 |     sha256_update(&_sha_state, p_buffer, len),
+#11 31.76       |                                ^~~~~~~~
+#11 31.76 include/core/sha.h:62:72: note: passing argument to parameter 'data' here
+#11 31.76    62 | int sha256_update ( sha256_state *p_sha256_state, const unsigned char *data, size_t len );
+#11 31.76       |                                                                        ^
+#11 31.76 src/performance/distribute/access_token.c:83:31: warning: incompatible pointer types passing 'sha256_hash *' (aka 'unsigned char (*)[32]') to parameter of type 'unsigned char *' [-Wincompatible-pointer-types]
+#11 31.76    83 |     sha256_final(&_sha_state, &p_access_token->_sha_hash);
+#11 31.76       |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 31.76 include/core/sha.h:72:65: note: passing argument to parameter 'hash' here
+#11 31.76    72 | int sha256_final ( sha256_state *p_sha256_state, unsigned char *hash );
+#11 31.76       |                                                                 ^
+#11 31.78 2 warnings generated.
+#11 31.82 src/performance/distribute/connection.c:172:38: warning: unused parameter 'pp_connection' [-Wunused-parameter]
+#11 31.82   172 | int connection_listen ( connection **pp_connection, const short port, fn_connection_accept *pfn_accept_callback )
+#11 31.82       |                                      ^
+#11 31.83 src/performance/distribute/connection.c:430:13: warning: unused label 'buffer_too_small' [-Wunused-label]
+#11 31.83   430 |             buffer_too_small:
+#11 31.83       |             ^~~~~~~~~~~~~~~~~
+#11 31.87 2 warnings generated.
+#11 31.94 src/performance/distribute/rpc.c:156:13: warning: unused label 'no_unpack' [-Wunused-label]
+#11 31.94   156 |             no_unpack:
+#11 31.94       |             ^~~~~~~~~~
+#11 31.94 src/performance/distribute/rpc.c:206:13: warning: unused label 'failed_to_construct_socket' [-Wunused-label]
+#11 31.94   206 |             failed_to_construct_socket:
+#11 31.94       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 31.95 src/performance/distribute/rpc.c:275:17: warning: assigning to 'rpc_entry *' (aka 'struct rpc_entry_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#11 31.95   275 |     p_rpc_entry = dict_get(p_rpc_registry, _rpc_name);
+#11 31.95       |                 ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 31.95 src/performance/distribute/rpc.c:261:21: warning: unused variable 'p_request' [-Wunused-variable]
+#11 31.95   261 |                    *p_request          = NULL,
+#11 31.95       |                     ^~~~~~~~~
+#11 31.95 src/performance/distribute/rpc.c:338:16: warning: initializing 'rpc_entry *' (aka 'struct rpc_entry_s *') with an expression of type 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#11 31.95   338 |     rpc_entry *p_rpc_entry        = dict_get(p_rpc_registry, p_name);
+#11 31.95       |                ^                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 31.99 5 warnings generated.
+#11 32.02 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/interfaces_example src/examples/interfaces_example.c build/lib/interfaces.so
+#11 32.11 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/log_example src/examples/log_example.c build/lib/log.so build/lib/interfaces.so
+#11 32.23 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/sync_example src/examples/sync_example.c build/lib/sync.so build/lib/log.so build/lib/interfaces.so
+#11 32.37 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/pack_example src/examples/pack_example.c build/lib/pack.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 32.49 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/aes_example src/examples/aes_example.c build/lib/aes.so build/lib/log.so build/lib/pack.so build/lib/interfaces.so
+#11 32.66 src/examples/aes_example.c:60:27: warning: passing 'char[16]' to parameter of type 'unsigned char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+#11 32.66    60 |         aes_encrypt_block(message, message, small_key);
+#11 32.66       |                           ^~~~~~~
+#11 32.66 include/core/aes.h:11:40: note: passing argument to parameter 'p_output' here
+#11 32.66    11 | int aes_encrypt_block ( unsigned char *p_output, unsigned char *p_input, unsigned char *key );
+#11 32.66       |                                        ^
+#11 32.66 src/examples/aes_example.c:60:36: warning: passing 'char[16]' to parameter of type 'unsigned char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+#11 32.66    60 |         aes_encrypt_block(message, message, small_key);
+#11 32.66       |                                    ^~~~~~~
+#11 32.66 include/core/aes.h:11:65: note: passing argument to parameter 'p_input' here
+#11 32.66    11 | int aes_encrypt_block ( unsigned char *p_output, unsigned char *p_input, unsigned char *key );
+#11 32.66       |                                                                 ^
+#11 32.66 src/examples/aes_example.c:60:45: warning: passing 'const unsigned char[16]' to parameter of type 'unsigned char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#11 32.66    60 |         aes_encrypt_block(message, message, small_key);
+#11 32.66       |                                             ^~~~~~~~~
+#11 32.66 include/core/aes.h:11:89: note: passing argument to parameter 'key' here
+#11 32.66    11 | int aes_encrypt_block ( unsigned char *p_output, unsigned char *p_input, unsigned char *key );
+#11 32.66       |                                                                                         ^
+#11 32.68 3 warnings generated.
+#11 32.73 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/rsa_example src/examples/rsa_example.c build/lib/rsa.so build/lib/log.so build/lib/pack.so build/lib/interfaces.so
+#11 33.01 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/sha_example src/examples/sha_example.c build/lib/sha.so build/lib/log.so build/lib/pack.so build/lib/interfaces.so
+#11 33.10 src/examples/sha_example.c:43:35: warning: passing 'char[15]' to parameter of type 'const unsigned char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+#11 33.10    43 |     sha256_update(&_sha256_state, "Hello, World!\0", 14);
+#11 33.10       |                                   ^~~~~~~~~~~~~~~~~
+#11 33.10 include/core/sha.h:62:72: note: passing argument to parameter 'data' here
+#11 33.10    62 | int sha256_update ( sha256_state *p_sha256_state, const unsigned char *data, size_t len );
+#11 33.10       |                                                                        ^
+#11 33.11 1 warning generated.
+#11 33.15 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/digital_signature_example src/examples/digital_signature_example.c build/lib/digital_signature.so build/lib/rsa.so build/lib/sha.so build/lib/log.so build/lib/interfaces.so
+#11 33.31 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/hash_example src/examples/hash_example.c build/lib/hash.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 33.52 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/socket_example src/examples/socket_example.c build/lib/socket.so build/lib/log.so /home/gsdk/build/lib/rsa.so /home/gsdk/build/lib/interfaces.so
+#11 33.68 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/stream_example src/examples/stream_example.c build/lib/stream.so build/lib/log.so build/lib/sync.so build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so /home/gsdk/build/lib/socket.so
+#11 33.77 src/examples/stream_example.c:28:13: warning: unused variable 'p_memory_stream' [-Wunused-variable]
+#11 33.77    28 |     stream *p_memory_stream  = NULL;
+#11 33.77       |             ^~~~~~~~~~~~~~~
+#11 33.77 src/examples/stream_example.c:29:10: warning: unused variable 'buffer' [-Wunused-variable]
+#11 33.77    29 |     char buffer[256] = { 0 };
+#11 33.77       |          ^~~~~~
+#11 33.79 2 warnings generated.
+#11 33.82 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/adjacency_list_example src/examples/adjacency_list_example.c build/lib/adjacency_list.so build/lib/log.so build/lib/sync.so build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 33.91 src/examples/adjacency_list_example.c:73:35: warning: incompatible pointer types passing 'adjacency_list *' (aka 'struct adjacency_list_s *') to parameter of type 'adjacency_list **' (aka 'struct adjacency_list_s **'); take the address with & [-Wincompatible-pointer-types]
+#11 33.91    73 |         adjacency_list_vertex_add(p_adjacency_list, "A");
+#11 33.91       |                                   ^~~~~~~~~~~~~~~~
+#11 33.91       |                                   &
+#11 33.91 include/data/adjacency_list.h:8:48: note: passing argument to parameter 'pp_list' here
+#11 33.91     8 | int adjacency_list_vertex_add(adjacency_list **pp_list, void *p_value);
+#11 33.91       |                                                ^
+#11 33.91 src/examples/adjacency_list_example.c:74:35: warning: incompatible pointer types passing 'adjacency_list *' (aka 'struct adjacency_list_s *') to parameter of type 'adjacency_list **' (aka 'struct adjacency_list_s **'); take the address with & [-Wincompatible-pointer-types]
+#11 33.91    74 |         adjacency_list_vertex_add(p_adjacency_list, "B");
+#11 33.91       |                                   ^~~~~~~~~~~~~~~~
+#11 33.91       |                                   &
+#11 33.91 include/data/adjacency_list.h:8:48: note: passing argument to parameter 'pp_list' here
+#11 33.91     8 | int adjacency_list_vertex_add(adjacency_list **pp_list, void *p_value);
+#11 33.91       |                                                ^
+#11 33.92 src/examples/adjacency_list_example.c:75:35: warning: incompatible pointer types passing 'adjacency_list *' (aka 'struct adjacency_list_s *') to parameter of type 'adjacency_list **' (aka 'struct adjacency_list_s **'); take the address with & [-Wincompatible-pointer-types]
+#11 33.92    75 |         adjacency_list_vertex_add(p_adjacency_list, "C");
+#11 33.92       |                                   ^~~~~~~~~~~~~~~~
+#11 33.92       |                                   &
+#11 33.92 include/data/adjacency_list.h:8:48: note: passing argument to parameter 'pp_list' here
+#11 33.92     8 | int adjacency_list_vertex_add(adjacency_list **pp_list, void *p_value);
+#11 33.92       |                                                ^
+#11 33.92 src/examples/adjacency_list_example.c:85:33: warning: incompatible pointer types passing 'adjacency_list *' (aka 'struct adjacency_list_s *') to parameter of type 'adjacency_list **' (aka 'struct adjacency_list_s **'); take the address with & [-Wincompatible-pointer-types]
+#11 33.92    85 |         adjacency_list_edge_add(p_adjacency_list, "A", "B", 0.0);
+#11 33.92       |                                 ^~~~~~~~~~~~~~~~
+#11 33.92       |                                 &
+#11 33.92 include/data/adjacency_list.h:18:46: note: passing argument to parameter 'pp_list' here
+#11 33.92    18 | int adjacency_list_edge_add(adjacency_list **pp_list, void *p_a_value, void *p_b_value, double weight);
+#11 33.92       |                                              ^
+#11 33.92 src/examples/adjacency_list_example.c:86:33: warning: incompatible pointer types passing 'adjacency_list *' (aka 'struct adjacency_list_s *') to parameter of type 'adjacency_list **' (aka 'struct adjacency_list_s **'); take the address with & [-Wincompatible-pointer-types]
+#11 33.92    86 |         adjacency_list_edge_add(p_adjacency_list, "B", "C", 0.0);
+#11 33.92       |                                 ^~~~~~~~~~~~~~~~
+#11 33.92       |                                 &
+#11 33.92 include/data/adjacency_list.h:18:46: note: passing argument to parameter 'pp_list' here
+#11 33.92    18 | int adjacency_list_edge_add(adjacency_list **pp_list, void *p_a_value, void *p_b_value, double weight);
+#11 33.92       |                                              ^
+#11 33.92 src/examples/adjacency_list_example.c:87:33: warning: incompatible pointer types passing 'adjacency_list *' (aka 'struct adjacency_list_s *') to parameter of type 'adjacency_list **' (aka 'struct adjacency_list_s **'); take the address with & [-Wincompatible-pointer-types]
+#11 33.92    87 |         adjacency_list_edge_add(p_adjacency_list, "A", "C", 0.0);
+#11 33.92       |                                 ^~~~~~~~~~~~~~~~
+#11 33.92       |                                 &
+#11 33.92 include/data/adjacency_list.h:18:46: note: passing argument to parameter 'pp_list' here
+#11 33.92    18 | int adjacency_list_edge_add(adjacency_list **pp_list, void *p_a_value, void *p_b_value, double weight);
+#11 33.92       |                                              ^
+#11 33.92 src/examples/adjacency_list_example.c:104:16: warning: variable 'step' set but not used [-Wunused-but-set-variable]
+#11 33.92   104 |     static int step = 0;
+#11 33.92       |                ^
+#11 33.92 src/examples/adjacency_list_example.c:100:64: warning: unused parameter 'p_event' [-Wunused-parameter]
+#11 33.92   100 | int checkpoint ( adjacency_list *p_adjacency_list, const char *p_event )
+#11 33.92       |                                                                ^
+#11 33.97 8 warnings generated.
+#11 34.01 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/adjacency_matrix_example src/examples/adjacency_matrix_example.c build/lib/adjacency_matrix.so build/lib/log.so build/lib/sync.so build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 34.12 src/examples/adjacency_matrix_example.c:104:16: warning: variable 'step' set but not used [-Wunused-but-set-variable]
+#11 34.12   104 |     static int step = 0;
+#11 34.12       |                ^
+#11 34.12 src/examples/adjacency_matrix_example.c:100:68: warning: unused parameter 'p_event' [-Wunused-parameter]
+#11 34.12   100 | int checkpoint ( adjacency_matrix *p_adjacency_matrix, const char *p_event )
+#11 34.12       |                                                                    ^
+#11 34.16 2 warnings generated.
+#11 34.20 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/array_example src/examples/array_example.c build/lib/array.so build/lib/log.so build/lib/sync.so build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 34.39 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/bitmap_example src/examples/bitmap_example.c build/lib/bitmap.so build/lib/log.so build/lib/sync.so build/lib/pack.so build/lib/interfaces.so
+#11 34.52 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/cache_example src/examples/cache_example.c build/lib/cache.so build/lib/log.so build/lib/sync.so build/lib/pack.so build/lib/interfaces.so
+#11 34.71 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/circular_buffer_example src/examples/circular_buffer_example.c build/lib/circular_buffer.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 34.84 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/dict_example src/examples/dict_example.c build/lib/dict.so build/lib/log.so build/lib/sync.so build/lib/pack.so build/lib/hash.so build/lib/interfaces.so
+#11 34.97 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/b_example src/examples/b_example.c build/lib/b.so /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 35.04 src/examples/b_example.c:119:41: warning: passing 'void **' to parameter of type 'const void **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#11 35.04   119 |     b_tree_search(p_b_tree, "thirteen", (void **)&p_result);
+#11 35.04       |                                         ^~~~~~~~~~~~~~~~~~
+#11 35.04 include/data/b.h:167:95: note: passing argument to parameter 'pp_value' here
+#11 35.04   167 | int b_tree_search ( const b_tree *const p_b_tree, const void *const p_key, const void **const pp_value );
+#11 35.04       |                                                                                               ^
+#11 35.08 1 warning generated.
+#11 35.11 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/binary_example src/examples/binary_example.c build/lib/binary.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 35.26 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/tuple_example src/examples/tuple_example.c build/lib/tuple.so build/lib/log.so build/lib/sync.so build/lib/pack.so build/lib/interfaces.so
+#11 35.39 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/priority_queue_example src/examples/priority_queue_example.c build/lib/priority_queue.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 35.50 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/queue_example src/examples/queue_example.c build/lib/queue.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 35.62 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/stack_example src/examples/stack_example.c build/lib/stack.so build/lib/log.so build/lib/sync.so build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/interfaces.so
+#11 35.71 src/examples/stack_example.c:113:34: warning: format specifies type 'char *' but the argument has type 'void *' [-Wformat]
+#11 35.71   113 |         printf("peek() -> %s\n", top);
+#11 35.71       |                           ~~     ^~~
+#11 35.71 src/examples/stack_example.c:157:34: warning: cast from 'hash64 (*)(void *)' (aka 'unsigned long long (*)(void *)') to 'fn_hash64 *' (aka 'unsigned long long (*)(const void *const, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+#11 35.71   157 |         h1 = stack_hash(p_stack, (fn_hash64 *)string_hash);
+#11 35.71       |                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+#11 35.71 src/examples/stack_example.c:186:25: warning: passing 'void **' to parameter of type 'const void **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#11 35.71   186 |             stack_pop(p_stack, &first);
+#11 35.71       |                                ^~~~~~
+#11 35.71 include/data/stack.h:66:58: note: passing argument to parameter 'ret' here
+#11 35.71    66 | int stack_pop ( stack *const p_stack, const void **const ret );
+#11 35.71       |                                                          ^
+#11 35.71 src/examples/stack_example.c:227:34: warning: cast from 'hash64 (*)(void *)' (aka 'unsigned long long (*)(void *)') to 'fn_hash64 *' (aka 'unsigned long long (*)(const void *const, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+#11 35.71   227 |         h2 = stack_hash(p_stack, (fn_hash64 *)string_hash);
+#11 35.71       |                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+#11 35.77 4 warnings generated.
+#11 35.81 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/red_black_example src/examples/red_black_example.c build/lib/red_black.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 35.95 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/base64_example src/examples/base64_example.c build/lib/base64.so build/lib/log.so build/lib/sync.so build/lib/interfaces.so
+#11 36.07 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/json_example src/examples/json_example.c build/lib/json.so build/lib/log.so build/lib/sync.so build/lib/hash.so build/lib/array.so build/lib/dict.so build/lib/interfaces.so -lm
+#11 36.25 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/parallel_example src/examples/parallel_example.c build/lib/parallel.so build/lib/log.so build/lib/sync.so build/lib/hash.so build/lib/array.so build/lib/dict.so build/lib/json.so build/lib/interfaces.so
+#11 36.49 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/examples/distribute_example src/examples/distribute_example.c build/lib/distribute.so /home/gsdk/build/lib/distribute.so /home/gsdk/build/lib/parallel.so /home/gsdk/build/lib/json.so /home/gsdk/build/lib/base64.so /home/gsdk/build/lib/dict.so /home/gsdk/build/lib/array.so /home/gsdk/build/lib/queue.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/interfaces.so /home/gsdk/build/lib/socket.so /home/gsdk/build/lib/rsa.so
+#11 36.66 src/examples/distribute_example.c:149:22: warning: unused parameter 'argc' [-Wunused-parameter]
+#11 36.66   149 | int run_server ( int argc, const char *argv[] )
+#11 36.66       |                      ^
+#11 36.66 src/examples/distribute_example.c:149:40: warning: unused parameter 'argv' [-Wunused-parameter]
+#11 36.66   149 | int run_server ( int argc, const char *argv[] )
+#11 36.66       |                                        ^
+#11 36.66 src/examples/distribute_example.c:228:9: warning: unused label 'failed_to_call_rpc' [-Wunused-label]
+#11 36.66   228 |         failed_to_call_rpc:
+#11 36.66       |         ^~~~~~~~~~~~~~~~~~~
+#11 36.66 src/examples/distribute_example.c:173:22: warning: unused parameter 'argc' [-Wunused-parameter]
+#11 36.66   173 | int run_client ( int argc, const char *argv[] )
+#11 36.66       |                      ^
+#11 36.66 src/examples/distribute_example.c:173:40: warning: unused parameter 'argv' [-Wunused-parameter]
+#11 36.66   173 | int run_client ( int argc, const char *argv[] )
+#11 36.66       |                                        ^
+#11 36.67 src/examples/distribute_example.c:241:22: warning: unused parameter 'argc' [-Wunused-parameter]
+#11 36.67   241 | int run_access ( int argc, const char *argv[] )
+#11 36.67       |                      ^
+#11 36.67 src/examples/distribute_example.c:241:40: warning: unused parameter 'argv' [-Wunused-parameter]
+#11 36.67   241 | int run_access ( int argc, const char *argv[] )
+#11 36.67       |                                        ^
+#11 36.67 src/examples/distribute_example.c:301:34: warning: unused parameter 'p_connection' [-Wunused-parameter]
+#11 36.67   301 | void *echo_handler ( connection *p_connection, void *p_input )
+#11 36.67       |                                  ^
+#11 36.67 src/examples/distribute_example.c:306:33: warning: unused parameter 'p_connection' [-Wunused-parameter]
+#11 36.67   306 | void *add_handler ( connection *p_connection, void *p_input )
+#11 36.67       |                                 ^
+#11 36.68 src/examples/distribute_example.c:363:13: warning: unused variable 'p_args' [-Wunused-variable]
+#11 36.68   363 |     size_t *p_args = (size_t *)p_value;
+#11 36.68       |             ^~~~~~
+#11 36.71 10 warnings generated.
+#11 36.76 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/utilities/digital_sign src/utilities/digital_sign.c /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/sha.so /home/gsdk/build/lib/rsa.so /home/gsdk/build/lib/digital_signature.so /home/gsdk/build/lib/interfaces.so
+#11 36.91 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -Wl,-rpath,'$ORIGIN/../lib' -o build/tests/tuple_test src/test/tuple_test.c /home/gsdk/build/lib/tuple.so /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/interfaces.so
+#11 37.12 clang  -fPIC -Wall -Wextra -O2 -Iinclude -Iinclude/core -Iinclude/data -Iinclude/performance -Iinclude/reflection -std=c23 -g -lpthread -pthread -O3 -Wl,-rpath,'$ORIGIN/../lib' -o build/main main.c /home/gsdk/build/lib/interfaces.so /home/gsdk/build/lib/log.so /home/gsdk/build/lib/sync.so /home/gsdk/build/lib/pack.so /home/gsdk/build/lib/aes.so /home/gsdk/build/lib/rsa.so /home/gsdk/build/lib/sha.so /home/gsdk/build/lib/digital_signature.so /home/gsdk/build/lib/hash.so /home/gsdk/build/lib/socket.so /home/gsdk/build/lib/stream.so /home/gsdk/build/lib/adjacency_list.so /home/gsdk/build/lib/adjacency_matrix.so /home/gsdk/build/lib/array.so /home/gsdk/build/lib/bitmap.so /home/gsdk/build/lib/cache.so /home/gsdk/build/lib/circular_buffer.so /home/gsdk/build/lib/dict.so /home/gsdk/build/lib/b.so /home/gsdk/build/lib/binary.so /home/gsdk/build/lib/tuple.so /home/gsdk/build/lib/priority_queue.so /home/gsdk/build/lib/queue.so /home/gsdk/build/lib/stack.so /home/gsdk/build/lib/red_black.so /home/gsdk/build/lib/base64.so /home/gsdk/build/lib/json.so /home/gsdk/build/lib/parallel.so /home/gsdk/build/lib/distribute.so
+#11 37.30 make: Leaving directory '/home/gsdk'
+#11 DONE 37.3s
+
+#12 [6/7] RUN (cd /home/; make clean; make)
+#12 0.325 rm -rf build
+#12 0.369 mkdir -p build
+#12 0.375 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/group.o src/group.c
+#12 0.480 src/group.c:79:13: warning: unused label 'no_email' [-Wunused-label]
+#12 0.480    79 |             no_email:
+#12 0.480       |             ^~~~~~~~~
+#12 0.480 src/group.c:87:13: warning: unused label 'no_groups' [-Wunused-label]
+#12 0.480    87 |             no_groups:
+#12 0.480       |             ^~~~~~~~~~
+#12 0.480 src/group.c:95:13: warning: unused label 'no_roles' [-Wunused-label]
+#12 0.480    95 |             no_roles:
+#12 0.480       |             ^~~~~~~~~
+#12 0.480 src/group.c:106:13: warning: unused label 'no_mem_1' [-Wunused-label]
+#12 0.480   106 |             no_mem_1: p_group = default_allocator(p_group, 0);
+#12 0.480       |             ^~~~~~~~~
+#12 0.480 src/group.c:25:12: warning: unused parameter 'org_id' [-Wunused-parameter]
+#12 0.480    25 |     size_t org_id,
+#12 0.480       |            ^
+#12 0.480 src/group.c:26:12: warning: unused parameter '_roles' [-Wunused-parameter]
+#12 0.480    26 |     size_t _roles[],
+#12 0.480       |            ^
+#12 0.480 src/group.c:27:12: warning: unused parameter '_roles_length' [-Wunused-parameter]
+#12 0.480    27 |     size_t _roles_length
+#12 0.480       |            ^
+#12 0.483 src/group.c:145:12: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.483   145 |     p_name = dict_get(p_dict, "name");
+#12 0.483       |            ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.483 src/group.c:146:16: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.483   146 |     p_group_id = dict_get(p_dict, "group_id");
+#12 0.483       |                ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.489 src/group.c:259:32: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.489   259 |     printf(" - ID   : %lld\n", p_group->id);
+#12 0.489       |                       ~~~~     ^~~~~~~~~~~
+#12 0.489       |                       %zu
+#12 0.491 src/group.c:311:32: warning: unused parameter 'p_value' [-Wunused-parameter]
+#12 0.491   311 | int group_unpack ( void *const p_value, void *p_buffer )
+#12 0.491       |                                ^
+#12 0.491 src/group.c:311:47: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+#12 0.491   311 | int group_unpack ( void *const p_value, void *p_buffer )
+#12 0.491       |                                               ^
+#12 0.498 12 warnings generated.
+#12 0.504 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/identity.o src/identity.c
+#12 0.592 src/identity.c:76:21: warning: initializing 'json_value *' (aka 'struct json_value_s *') with an expression of type 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.592    76 |         json_value *p_user = dict_get(p_dict, "user"),
+#12 0.592       |                     ^        ~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.592 src/identity.c:77:21: warning: initializing 'json_value *' (aka 'struct json_value_s *') with an expression of type 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.592    77 |                    *p_pass = dict_get(p_dict, "pass");
+#12 0.592       |                     ^        ~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.599 src/identity.c:161:48: warning: incompatible pointer types passing 'fn_socket_tcp_accept *' (aka 'int (**)(int, unsigned long, unsigned short, void *const)') to parameter of type 'fn_socket_tcp_accept' (aka 'int (*)(int, unsigned long, unsigned short, void *const)'); dereference with * [-Wincompatible-pointer-types]
+#12 0.599   161 |         socket_tcp_listen(p_identity->_socket, (fn_socket_tcp_accept *)identity_server_accept, p_identity);
+#12 0.599       |                                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.599       |                                                *
+#12 0.599 gsdk/include/core/socket.h:91:70: note: passing argument to parameter 'pfn_tcp_accept_callback' here
+#12 0.599    91 | int socket_tcp_listen ( socket_tcp _socket_tcp, fn_socket_tcp_accept pfn_tcp_accept_callback, void *const p_parameter );
+#12 0.599       |                                                                      ^
+#12 0.604 src/identity.c:200:13: warning: cast from 'int (*)(size_t, size_t)' (aka 'int (*)(unsigned long, unsigned long)') to 'fn_comparator *' (aka 'int (*)(const void *, const void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+#12 0.604   200 |             (fn_comparator *)   role_comparator, // comparator
+#12 0.604       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.606 src/identity.c:208:13: warning: cast from 'int (*)(size_t, size_t)' (aka 'int (*)(unsigned long, unsigned long)') to 'fn_comparator *' (aka 'int (*)(const void *, const void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+#12 0.606   208 |             (fn_comparator *)   group_comparator, // comparator
+#12 0.606       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.606 src/identity.c:216:13: warning: cast from 'int (*)(size_t, size_t)' (aka 'int (*)(unsigned long, unsigned long)') to 'fn_comparator *' (aka 'int (*)(const void *, const void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+#12 0.606   216 |             (fn_comparator *)   user_comparator, // comparator
+#12 0.609       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.610 src/identity.c:243:63: warning: cast from 'int (*)(identity *)' (aka 'int (*)(struct identity_s *)') to 'fn_parallel_task *' (aka 'void *(*)(void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+#12 0.610   243 |         parallel_thread_start(&p_identity->p_listener_thread, (fn_parallel_task *)identity_listener, p_identity);
+#12 0.610       |                                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.630 7 warnings generated.
+#12 0.639 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/org.o src/org.c
+#12 0.705 src/org.c:76:13: warning: unused label 'no_email' [-Wunused-label]
+#12 0.705    76 |             no_email:
+#12 0.705       |             ^~~~~~~~~
+#12 0.705 src/org.c:84:13: warning: unused label 'no_groups' [-Wunused-label]
+#12 0.705    84 |             no_groups:
+#12 0.705       |             ^~~~~~~~~~
+#12 0.705 src/org.c:92:13: warning: unused label 'no_roles' [-Wunused-label]
+#12 0.705    92 |             no_roles:
+#12 0.705       |             ^~~~~~~~~
+#12 0.705 src/org.c:103:13: warning: unused label 'no_mem_1' [-Wunused-label]
+#12 0.705   103 |             no_mem_1: p_org = default_allocator(p_org, 0);
+#12 0.707       |             ^~~~~~~~~
+#12 0.711 src/org.c:142:12: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.711   142 |     p_name = dict_get(p_dict, "name");
+#12 0.711       |            ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.712 src/org.c:143:14: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.712   143 |     p_org_id = dict_get(p_dict, "org_id");
+#12 0.712       |              ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.716 src/org.c:256:32: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.716   256 |     printf(" - ID   : %lld\n", p_org->id);
+#12 0.716       |                       ~~~~     ^~~~~~~~~
+#12 0.716       |                       %zu
+#12 0.719 src/org.c:308:30: warning: unused parameter 'p_value' [-Wunused-parameter]
+#12 0.719   308 | int org_unpack ( void *const p_value, void *p_buffer )
+#12 0.719       |                              ^
+#12 0.719 src/org.c:308:45: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+#12 0.719   308 | int org_unpack ( void *const p_value, void *p_buffer )
+#12 0.719       |                                             ^
+#12 0.728 9 warnings generated.
+#12 0.732 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/role.o src/role.c
+#12 0.805 src/role.c:81:13: warning: unused label 'no_email' [-Wunused-label]
+#12 0.805    81 |             no_email:
+#12 0.805       |             ^~~~~~~~~
+#12 0.805 src/role.c:89:13: warning: unused label 'no_groups' [-Wunused-label]
+#12 0.805    89 |             no_groups:
+#12 0.805       |             ^~~~~~~~~~
+#12 0.806 src/role.c:97:13: warning: unused label 'no_roles' [-Wunused-label]
+#12 0.806    97 |             no_roles:
+#12 0.806       |             ^~~~~~~~~
+#12 0.806 src/role.c:108:13: warning: unused label 'no_mem_1' [-Wunused-label]
+#12 0.806   108 |             no_mem_1: p_role = default_allocator(p_role, 0);
+#12 0.806       |             ^~~~~~~~~
+#12 0.806 src/role.c:27:12: warning: unused parameter 'org_id' [-Wunused-parameter]
+#12 0.806    27 |     size_t org_id,
+#12 0.806       |            ^
+#12 0.806 src/role.c:28:11: warning: unused parameter '_p_permissions' [-Wunused-parameter]
+#12 0.806    28 |     char *_p_permissions[],
+#12 0.806       |           ^
+#12 0.806 src/role.c:29:12: warning: unused parameter 'permissions_length' [-Wunused-parameter]
+#12 0.806    29 |     size_t permissions_length
+#12 0.806       |            ^
+#12 0.810 src/role.c:147:12: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.810   147 |     p_name = dict_get(p_dict, "name");
+#12 0.810       |            ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.810 src/role.c:148:15: warning: assigning to 'json_value *' (aka 'struct json_value_s *') from 'const void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 0.810   148 |     p_role_id = dict_get(p_dict, "role_id");
+#12 0.810       |               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.812 src/role.c:261:32: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.812   261 |     printf(" - ID   : %lld\n", p_role->id);
+#12 0.812       |                       ~~~~     ^~~~~~~~~~
+#12 0.812       |                       %zu
+#12 0.814 src/role.c:313:31: warning: unused parameter 'p_value' [-Wunused-parameter]
+#12 0.814   313 | int role_unpack ( void *const p_value, void *p_buffer )
+#12 0.814       |                               ^
+#12 0.814 src/role.c:313:46: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+#12 0.814   313 | int role_unpack ( void *const p_value, void *p_buffer )
+#12 0.815       |                                              ^
+#12 0.822 12 warnings generated.
+#12 0.825 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -fPIC -c -o build/user.o src/user.c
+#12 0.893 src/user.c:118:13: warning: unused label 'no_email' [-Wunused-label]
+#12 0.893   118 |             no_email:
+#12 0.893       |             ^~~~~~~~~
+#12 0.897 src/user.c:172:11: warning: variable 'p_dict' set but not used [-Wunused-but-set-variable]
+#12 0.897   172 |     dict *p_dict = NULL;
+#12 0.897       |           ^
+#12 0.900 src/user.c:243:29: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.900   243 |     printf(" - ID: %lld\n", p_user->id);
+#12 0.900       |                    ~~~~     ^~~~~~~~~~
+#12 0.900       |                    %zu
+#12 0.900 src/user.c:244:42: warning: format specifies type 'long long' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.900   244 |     printf(" - Organization ID: %lld\n", p_user->org_id);
+#12 0.900       |                                 ~~~~     ^~~~~~~~~~~~~~
+#12 0.900       |                                 %zu
+#12 0.901 src/user.c:250:32: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.901   250 |     printf(" - Roles[%d]: \n", array_size(p_user->p_roles));
+#12 0.901       |                      ~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.901       |                      %zu
+#12 0.901 src/user.c:251:33: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+#12 0.901   251 |     printf(" - Groups[%d]: \n", array_size(p_user->p_groups));
+#12 0.901       |                       ~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#12 0.901       |                       %zu
+#12 0.905 src/user.c:363:31: warning: unused parameter 'p_value' [-Wunused-parameter]
+#12 0.905   363 | int user_unpack ( void *const p_value, void *p_buffer )
+#12 0.905       |                               ^
+#12 0.905 src/user.c:363:46: warning: unused parameter 'p_buffer' [-Wunused-parameter]
+#12 0.905   363 | int user_unpack ( void *const p_value, void *p_buffer )
+#12 0.905       |                                              ^
+#12 0.913 8 warnings generated.
+#12 0.918 clang -shared -o build/libidentity.so build/group.o build/identity.o build/org.o build/role.o build/user.o gsdk/build/lib/adjacency_list.so gsdk/build/lib/adjacency_matrix.so gsdk/build/lib/aes.so gsdk/build/lib/array.so gsdk/build/lib/b.so gsdk/build/lib/base64.so gsdk/build/lib/binary.so gsdk/build/lib/bitmap.so gsdk/build/lib/cache.so gsdk/build/lib/circular_buffer.so gsdk/build/lib/dict.so gsdk/build/lib/digital_signature.so gsdk/build/lib/distribute.so gsdk/build/lib/hash.so gsdk/build/lib/interfaces.so gsdk/build/lib/json.so gsdk/build/lib/log.so gsdk/build/lib/pack.so gsdk/build/lib/parallel.so gsdk/build/lib/priority_queue.so gsdk/build/lib/queue.so gsdk/build/lib/red_black.so gsdk/build/lib/rsa.so gsdk/build/lib/sha.so gsdk/build/lib/socket.so gsdk/build/lib/stack.so gsdk/build/lib/stream.so gsdk/build/lib/sync.so gsdk/build/lib/tuple.so
+#12 0.971 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -o build/identity_server identity_server.c build/libidentity.so gsdk/build/lib/adjacency_list.so gsdk/build/lib/adjacency_matrix.so gsdk/build/lib/aes.so gsdk/build/lib/array.so gsdk/build/lib/b.so gsdk/build/lib/base64.so gsdk/build/lib/binary.so gsdk/build/lib/bitmap.so gsdk/build/lib/cache.so gsdk/build/lib/circular_buffer.so gsdk/build/lib/dict.so gsdk/build/lib/digital_signature.so gsdk/build/lib/distribute.so gsdk/build/lib/hash.so gsdk/build/lib/interfaces.so gsdk/build/lib/json.so gsdk/build/lib/log.so gsdk/build/lib/pack.so gsdk/build/lib/parallel.so gsdk/build/lib/priority_queue.so gsdk/build/lib/queue.so gsdk/build/lib/red_black.so gsdk/build/lib/rsa.so gsdk/build/lib/sha.so gsdk/build/lib/socket.so gsdk/build/lib/stack.so gsdk/build/lib/stream.so gsdk/build/lib/sync.so gsdk/build/lib/tuple.so -Wl,-rpath,'$ORIGIN' -Wl,-rpath,'$ORIGIN/../gsdk/build/lib'
+#12 1.062 identity_server.c:69:66: warning: passing 'const char *[1]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.062    69 |             (void) role_construct(&_p_roles[0], 0, "owner"  , 0, _owner_permissions  , 1),
+#12 1.062       |                                                                  ^~~~~~~~~~~~~~~~~~
+#12 1.062 include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+#12 1.062    44 |     char *_p_permissions[],
+#12 1.062       |           ^
+#12 1.062 identity_server.c:70:66: warning: passing 'const char *[4]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.062    70 |             (void) role_construct(&_p_roles[1], 1, "admin"  , 0, _admin_permissions  , 4),
+#12 1.062       |                                                                  ^~~~~~~~~~~~~~~~~~
+#12 1.062 include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+#12 1.062    44 |     char *_p_permissions[],
+#12 1.062       |           ^
+#12 1.062 identity_server.c:71:66: warning: passing 'const char *[4]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.062    71 |             (void) role_construct(&_p_roles[2], 2, "editor" , 0, _editor_permissions , 4),
+#12 1.063       |                                                                  ^~~~~~~~~~~~~~~~~~~
+#12 1.063 include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+#12 1.063    44 |     char *_p_permissions[],
+#12 1.063       |           ^
+#12 1.064 identity_server.c:72:66: warning: passing 'const char *[1]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.064    72 |             (void) role_construct(&_p_roles[3], 3, "viewer" , 0, _viewer_permissions , 1),
+#12 1.064       |                                                                  ^~~~~~~~~~~~~~~~~~~
+#12 1.064 include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+#12 1.064    44 |     char *_p_permissions[],
+#12 1.064       |           ^
+#12 1.064 identity_server.c:73:66: warning: passing 'const char *[2]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.064    73 |             (void) role_construct(&_p_roles[4], 4, "billing", 0, _billing_permissions, 2),
+#12 1.064       |                                                                  ^~~~~~~~~~~~~~~~~~~~
+#12 1.064 include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+#12 1.064    44 |     char *_p_permissions[],
+#12 1.064       |           ^
+#12 1.064 identity_server.c:74:66: warning: passing 'const char *[2]' to parameter of type 'char **' discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.064    74 |             (void) role_construct(&_p_roles[5], 5, "support", 0, _support_permissions, 2);
+#12 1.064       |                                                                  ^~~~~~~~~~~~~~~~~~~~
+#12 1.064 include/identity/role.h:44:11: note: passing argument to parameter '_p_permissions' here
+#12 1.064    44 |     char *_p_permissions[],
+#12 1.064       |           ^
+#12 1.065 identity_server.c:91:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.065    91 |             (void) group_construct(&_p_groups[0], 0, "dev"    , 0, _dev_roles    , 1),
+#12 1.065       |                                                                    ^~~~~~~~~~
+#12 1.065 include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+#12 1.066    44 |     size_t _roles[],
+#12 1.066       |            ^
+#12 1.067 identity_server.c:92:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.067    92 |             (void) group_construct(&_p_groups[1], 1, "finance", 0, _finance_roles, 1),
+#12 1.067       |                                                                    ^~~~~~~~~~~~~~
+#12 1.067 include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+#12 1.067    44 |     size_t _roles[],
+#12 1.067       |            ^
+#12 1.067 identity_server.c:93:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.067    93 |             (void) group_construct(&_p_groups[2], 2, "ops"    , 0, _ops_roles    , 1),
+#12 1.067       |                                                                    ^~~~~~~~~~
+#12 1.067 include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+#12 1.067    44 |     size_t _roles[],
+#12 1.067       |            ^
+#12 1.068 identity_server.c:94:68: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.069    94 |             (void) group_construct(&_p_groups[3], 3, "support", 0, _support_roles, 1);
+#12 1.069       |                                                                    ^~~~~~~~~~~~~~
+#12 1.069 include/identity/group.h:44:12: note: passing argument to parameter '_roles' here
+#12 1.069    44 |     size_t _roles[],
+#12 1.069       |            ^
+#12 1.070 identity_server.c:113:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.070   113 |             (void) user_construct(&_p_users[0], 0, "Alice", "a", 0, _dev_group, 1, NULL      , 0),
+#12 1.070       |                                                                     ^~~~~~~~~~
+#12 1.070 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.070    48 |     size_t *p_groups, size_t groups_len,
+#12 1.070       |             ^
+#12 1.070 identity_server.c:114:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.070   114 |             (void) user_construct(&_p_users[1], 1, "Bob"  , "b", 0, _dev_group, 1, NULL      , 0),
+#12 1.070       |                                                                     ^~~~~~~~~~
+#12 1.070 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.070    48 |     size_t *p_groups, size_t groups_len,
+#12 1.070       |             ^
+#12 1.072 identity_server.c:115:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.072   115 |             (void) user_construct(&_p_users[2], 2, "Carol", "c", 0, _dev_group, 1, NULL      , 0),
+#12 1.072       |                                                                     ^~~~~~~~~~
+#12 1.072 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.072    48 |     size_t *p_groups, size_t groups_len,
+#12 1.072       |             ^
+#12 1.073 identity_server.c:116:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.073   116 |             (void) user_construct(&_p_users[3], 3, "Dana" , "d", 0, _dev_group, 1, NULL      , 0),
+#12 1.073       |                                                                     ^~~~~~~~~~
+#12 1.073 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.073    48 |     size_t *p_groups, size_t groups_len,
+#12 1.073       |             ^
+#12 1.073 identity_server.c:117:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.073   117 |             (void) user_construct(&_p_users[4], 4, "Erin" , "e", 0, _dev_group, 1, NULL      , 0),
+#12 1.073       |                                                                     ^~~~~~~~~~
+#12 1.073 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.073    48 |     size_t *p_groups, size_t groups_len,
+#12 1.073       |             ^
+#12 1.075 identity_server.c:118:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.075   118 |             (void) user_construct(&_p_users[5], 5, "Frank", "f", 0, _dev_group, 1, NULL      , 0),
+#12 1.075       |                                                                     ^~~~~~~~~~
+#12 1.075 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.075    48 |     size_t *p_groups, size_t groups_len,
+#12 1.075       |             ^
+#12 1.075 identity_server.c:119:69: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.075   119 |             (void) user_construct(&_p_users[6], 6, "Zoe"  , "z", 0, _dev_group, 1, _zoe_roles, 1);
+#12 1.075       |                                                                     ^~~~~~~~~~
+#12 1.075 include/identity/user.h:48:13: note: passing argument to parameter 'p_groups' here
+#12 1.075    48 |     size_t *p_groups, size_t groups_len,
+#12 1.075       |             ^
+#12 1.075 identity_server.c:119:84: warning: passing 'const size_t[1]' (aka 'const unsigned long[1]') to parameter of type 'size_t *' (aka 'unsigned long *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+#12 1.075   119 |             (void) user_construct(&_p_users[6], 6, "Zoe"  , "z", 0, _dev_group, 1, _zoe_roles, 1);
+#12 1.076       |                                                                                    ^~~~~~~~~~
+#12 1.076 include/identity/user.h:49:13: note: passing argument to parameter 'p_roles' here
+#12 1.076    49 |     size_t *p_roles , size_t roles_len 
+#12 1.076       |             ^
+#12 1.076 identity_server.c:106:26: warning: unused variable '_finance_group' [-Wunused-variable]
+#12 1.076   106 |             const size_t _finance_group[] = { 1 };
+#12 1.077       |                          ^~~~~~~~~~~~~~
+#12 1.077 identity_server.c:107:26: warning: unused variable '_ops_group' [-Wunused-variable]
+#12 1.077   107 |             const size_t _ops_group    [] = { 2 };
+#12 1.077       |                          ^~~~~~~~~~
+#12 1.077 identity_server.c:108:26: warning: unused variable '_support_group' [-Wunused-variable]
+#12 1.077   108 |             const size_t _support_group[] = { 3 };
+#12 1.077       |                          ^~~~~~~~~~~~~~
+#12 1.077 identity_server.c:40:11: warning: unused variable 'p_user' [-Wunused-variable]
+#12 1.077    40 |     user *p_user = NULL;
+#12 1.077       |           ^~~~~~
+#12 1.077 identity_server.c:34:16: warning: unused parameter 'argc' [-Wunused-parameter]
+#12 1.077    34 | int main ( int argc, const char *argv[] )
+#12 1.077       |                ^
+#12 1.077 identity_server.c:34:34: warning: unused parameter 'argv' [-Wunused-parameter]
+#12 1.077    34 | int main ( int argc, const char *argv[] )
+#12 1.077       |                                  ^
+#12 1.085 24 warnings generated.
+#12 1.128 clang -Wall -Wextra -Iinclude -Igsdk/include -Igsdk/include/core -Igsdk/include/data -Igsdk/include/performance -Igsdk/include/reflection -std=c23 -g -o build/identity_client identity_client.c build/libidentity.so gsdk/build/lib/adjacency_list.so gsdk/build/lib/adjacency_matrix.so gsdk/build/lib/aes.so gsdk/build/lib/array.so gsdk/build/lib/b.so gsdk/build/lib/base64.so gsdk/build/lib/binary.so gsdk/build/lib/bitmap.so gsdk/build/lib/cache.so gsdk/build/lib/circular_buffer.so gsdk/build/lib/dict.so gsdk/build/lib/digital_signature.so gsdk/build/lib/distribute.so gsdk/build/lib/hash.so gsdk/build/lib/interfaces.so gsdk/build/lib/json.so gsdk/build/lib/log.so gsdk/build/lib/pack.so gsdk/build/lib/parallel.so gsdk/build/lib/priority_queue.so gsdk/build/lib/queue.so gsdk/build/lib/red_black.so gsdk/build/lib/rsa.so gsdk/build/lib/sha.so gsdk/build/lib/socket.so gsdk/build/lib/stack.so gsdk/build/lib/stream.so gsdk/build/lib/sync.so gsdk/build/lib/tuple.so -Wl,-rpath,'$ORIGIN' -Wl,-rpath,'$ORIGIN/../gsdk/build/lib'
+#12 1.202 identity_client.c:42:16: warning: unused parameter 'argc' [-Wunused-parameter]
+#12 1.202    42 | int main ( int argc, const char *argv[] )
+#12 1.202       |                ^
+#12 1.202 identity_client.c:42:34: warning: unused parameter 'argv' [-Wunused-parameter]
+#12 1.202    42 | int main ( int argc, const char *argv[] )
+#12 1.202       |                                  ^
+#12 1.208 2 warnings generated.
+#12 DONE 1.3s
+
+#13 [7/7] RUN (cd /home/; chmod +x resources/fork.sh)
+#13 DONE 0.3s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 2.0s done
+#14 exporting manifest sha256:0da30ebb8b9d80a949b4f9b6ccc92b49f0892db4bd4f7029fefe118c079735e1 0.0s done
+#14 exporting config sha256:3b58259e40ace39828b6a2b3d1c2d3164350cecae401bb0818274fb4e48db117 0.0s done
+#14 exporting attestation manifest sha256:a0cd66d254acaac09a78a1d67df845b4ba25f813fd98c7365bfb0758859b703a 0.0s done
+#14 exporting manifest list sha256:2a87f819eec5e98601e3ee0e7df5d6677a443b42e3855a5ebeed1fbc3a7ce880 0.0s done
+#14 naming to docker.io/library/identity:latest done
+#14 unpacking to docker.io/library/identity:latest
+#14 unpacking to docker.io/library/identity:latest 1.6s done
+#14 DONE 3.7s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/oerhn64z689tu20jgloxdg5y7
+
+ [33m1 warning found (use docker --debug to expand):
+[0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 13)

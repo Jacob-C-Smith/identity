@@ -3,9 +3,9 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/base64"
+	"example/db"
 	"example/identity"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -15,27 +15,12 @@ import (
 // - Sends 401 with one or more WWW-Authenticate challenges.
 // - Validates Basic credentials and grants access when correct.
 var id *identity.Identity = nil
+var kvdb *db.KeyValueDb = nil
 
 func main() {
-	var addr string = ":6712"
-	var realm string = "g10.app"
-	var user string = "jacob"
-	var pass string = "secret"
 
-	id = identity.NewIdentity("localhost:6708", 5*time.Second)
-
-	mux := http.NewServeMux()
-	mux.Handle("/", protectedHandler(realm, user, pass))
-
-	s := &http.Server{
-		Addr:              addr,
-		Handler:           mux,
-		ReadHeaderTimeout: 5 * time.Second,
-	}
-
-	if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		log.Fatal(err)
-	}
+	id = identity.NewIdentity("localhost:6714", 5*time.Second)
+	kvdb, _ := db.NewKeyValueDb("localhost:6713")
 }
 
 func protectedHandler(realm, wantUser, wantPass string) http.Handler {

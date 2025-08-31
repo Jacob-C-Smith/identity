@@ -1,0 +1,86 @@
+ [docker] Starting identity node on 172.17.0.2
+ [94m[identity] Constructed identity server
+ [0m[94mOrg @0x15f34630
+ [0m - ID   : 0
+  - Name : acme
+ [94mrole @0x15f346c0
+ [0m - ID   : 0
+  - Name : owner
+ [94mrole @0x15f34730
+ [0m - ID   : 1
+  - Name : admin
+ [94mrole @0x15f347a0
+ [0m - ID   : 2
+  - Name : editor
+ [94mrole @0x15f34810
+ [0m - ID   : 3
+  - Name : viewer
+ [94mrole @0x15f34880
+ [0m - ID   : 4
+  - Name : billing
+ [94mrole @0x15f348f0
+ [0m - ID   : 5
+  - Name : support
+ [94mgroup @0x15f34a80
+ [0m - ID   : 0
+  - Name : dev
+ [94mgroup @0x15f34ae0
+ [0m - ID   : 1
+  - Name : finance
+ [94mgroup @0x15f34b40
+ [0m - ID   : 2
+  - Name : ops
+ [94mgroup @0x15f34ba0
+ [0m - ID   : 3
+  - Name : support
+ [94muser @0x15f34cc0
+ [0m - ID: 0
+  - Organization ID: 0
+  - Name: Alice
+  - Pass: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
+  - Roles[0]: 
+  - Groups[1]: 
+ [94muser @0x15f34e10
+ [0m - ID: 1
+  - Organization ID: 0
+  - Name: Bob
+  - Pass: 3e23e816039594a33894f6564e1b1348bbd7a088d42c4acb73eeaed59c09d
+  - Roles[0]: 
+  - Groups[1]: 
+ [94muser @0x15f34f60
+ [0m - ID: 2
+  - Organization ID: 0
+  - Name: Carol
+  - Pass: 2e7d2c3a9507ae265ecf5b5356885a53393a229d241394997265a1a25aefc6
+  - Roles[0]: 
+  - Groups[1]: 
+ [94muser @0x15f350b0
+ [0m - ID: 3
+  - Organization ID: 0
+  - Name: Dana
+  - Pass: 18ac3e7343f01689c51e93f935261169d9e3f56543642983faf934f4f8e4
+  - Roles[0]: 
+  - Groups[1]: 
+ [94muser @0x15f35200
+ [0m - ID: 4
+  - Organization ID: 0
+  - Name: Erin
+  - Pass: 3f79bb7b435b5321651daefd374cdc681dc6faa65e374e38337b88ca46dea
+  - Roles[0]: 
+  - Groups[1]: 
+ [94muser @0x15f35350
+ [0m - ID: 5
+  - Organization ID: 0
+  - Name: Frank
+  - Pass: 252f10c83610ebca1a59cbae8255eba2f95be4d1d7bcfa89d7248a82d9f111
+  - Roles[0]: 
+  - Groups[1]: 
+ [94muser @0x15f354a0
+ [0m - ID: 6
+  - Organization ID: 0
+  - Name: Zoe
+  - Pass: 594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d0e84c524d67b6
+  - Roles[1]: 
+  - Groups[1]: 
+ [94m[identity] Listening for incoming connections...
+ [0m[94m[identity] Accepted incoming connection from 127.0.0.1:52042
